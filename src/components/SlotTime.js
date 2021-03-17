@@ -13,6 +13,8 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     maxWidth: 360,
     backgroundColor: theme.palette.background.paper,
+    border:'solid',
+    borderRadius:15
   },
 }));
 const slots=[
@@ -22,7 +24,7 @@ const slots=[
 {key:4,startTime:"16:00",endTime:"18:00"},
 
 ];
- const SlotTime=({setTimeSelected}) =>{
+ const SlotTime=({setTimeSelected,setTimeValue}) =>{
   const classes = useStyles();
   const [selected , setSelected] = React.useState("");
   const [selectedIndex, setSelectedIndex] = React.useState(-1);
@@ -30,8 +32,7 @@ const slots=[
   function handleChange(e,index){
     setSelectedIndex(index);
     setTimeSelected(true);
-
-     
+    setTimeValue(index);
   }
   useEffect(()=>{
    // alert(selectedIndex);

@@ -4,6 +4,7 @@ import { MapContainer, useMapEvents,TileLayer, Marker, Popup ,Tooltip,Polygon} f
 //import {endPart,showMarkers,incrementDifference} from '../actions/actions';
 //import {haversineDistance}from '../util/drawData.js';
 import Calendar from './Calendar';
+import Status from './Status';
 import seats from '../data/seats';
 import parkings from '../data/parkings';
 import area from '../data/area';
@@ -21,7 +22,7 @@ const Map=()=>{
         center={[ 24.791658318888238,46.74198403820229 ]}
          zoom={20} 
          scrollWheelZoom={false} 
-         style={{width: '890px', height: '700px'}}  
+         style={{width: '1833px', height: '700px'}}  
         > 
             <TileLayer
                 attribution='Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
@@ -37,7 +38,7 @@ const Map=()=>{
                 <Popup style={{ height:"400px"}}>
                     <Calendar/>
                 </Popup>
-                <Tooltip> This is a chair</Tooltip>
+                <Tooltip> <Status/></Tooltip>
 
             </Marker>
         })    
