@@ -8,10 +8,24 @@ import Status from './Status';
 import seats from '../data/seats';
 import parkings from '../data/parkings';
 import area from '../data/area';
+import { makeStyles } from '@material-ui/core/styles';
+
 import {seatIcon,freSeatIcon,parkingIcon} from './Icon'
 const transparentOption = { color: 'red',fillColor:"none" }
-
+const useStyles = makeStyles((theme) => ({
+    tooltip:{
+        borderRadius:10,
+        backgroundOrigin: 'border-box',
+        backgroundClip: 'content-box, border-box',
+        backgroundSize: 'cover',
+        boxShadow:' 0 0 5px 5px rgb(0, 94, 255)',
+         
+    },
+    
+  }));
+  
 const Content =()=>{
+    const classes= useStyles();
     function handleMouseOut(e){
         e.target.closePopup();
     }
@@ -31,7 +45,7 @@ const Content =()=>{
             <Popup style={{ height:"400px"}}  key={seat.coordinates[1]}>
                 <Calendar seat={seat.id}/>
             </Popup>
-            <Tooltip  key={seat.coordinates[0]}> <Status seat={seat.id}/></Tooltip>
+            <Tooltip className={classes.tooltip} key={seat.coordinates[0]}> <Status seat={seat.id}/></Tooltip>
 
         </Marker>
     })    

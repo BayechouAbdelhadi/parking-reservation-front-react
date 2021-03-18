@@ -8,14 +8,18 @@ import { Link } from "react-router-dom";
 import { logout,/*findParts*/} from "../actions/securityActions";
 import {useStore,useSelector,useDispatch} from "react-redux";
 import styled from 'styled-components';
-//import {resetDifference,resetIteration,clearAnswers,enableStart,start,endPart,resetAnswer,resetScore} from '../actions/actions';
-
+import IconButton from '@material-ui/core/IconButton';
+import { BiLogOut as ExitToAppRoundedIcon} from "react-icons/bi";
+import { AiOutlineHome as HomeIcon } from "react-icons/ai";
+import {FaUserPlus} from "react-icons/fa";
+import {FiLogIn} from "react-icons/fi";
 
 
 const StyledLink = styled(Link)`
-    text-decoration: none;
 
-    &:focus, &:hover, &:visited, &:link, &:active {
+    text-decoration: none;
+    color:white;
+    &:focus, &:hover, &:visited, &:link, &:active,&:click{
         text-decoration: none;
     }
 `;
@@ -72,26 +76,33 @@ const useStyles = makeStyles((theme) => ({
     background: 'blue',
     borderRadius: 3,
     border: 0,
-    color: '#80FF80',
+    color: 'white',
     height: 30,
     padding: '0 30px',
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
     '&:hover': {
       background: "#000",
    },
+   '&:click': {
+    color: "white",
+ },
   },
   header:{
-    //background: '#848382',//'linear-gradient(#B03A2E, #F8C471)',
-    background: 'linear-gradient(#feb47b,antiquewhite,#feb47b)',
+     //background: 'linear-gradient(to right,rgb(3, 152, 252),white)',//'linear-gradient(#B03A2E, #F8C471)',
+    //background: 'linear-gradient(#feb47b,antiquewhite,#feb47b)',
+    background:'rgb(3, 36, 252)',
     color:'white',
     fontFamily:'times-new-roman',
     opacity:'0.75'
   },
   title: {
     flexGrow: 1,
-    color:'black',
+    color:'white',
     fontWeight :'bold',
     fontSize:30,
+    '&:click': {
+      color: "white",
+   }
 }}));
 
 const ButtonAppBar=()=> {
@@ -120,36 +131,34 @@ const ButtonAppBar=()=> {
     dispatch(resetAnswer());
     dispatch(resetScore());
     dispatch(start());*/
-
-
   }
   return (
     <div className={classes.root}>
       <AppBar className={classes.header} position="static">
         <Toolbar>
-          <Typography edge="start" variant="h6" className={classes.title } >
-            <StyledLink to="/book" onClick ={reset}
+          <Typography edge="start" variant="h6" className={classes.title }>
+            <StyledLink to="/book" onClick ={reset} 
             >
-              GeoGame
+              Reservation
             </StyledLink>
           </Typography>
           {validToken ?
           <>
             <StyledLink to="/profile" onClick={showProfile}
             >
-              <Button className={classes.profileButton} >{user.fullName}</Button>
+              <IconButton  ><HomeIcon fontSize="large"/></IconButton>
             </StyledLink>
             <StyledLink  to="/"  onClick={handleLogout}
             >
-                <Button className={classes.logOutButton}>Logout</Button>
+                <IconButton ><ExitToAppRoundedIcon fontSize="large"/></IconButton>
             </StyledLink>
           </>:
           <>
             <StyledLink  to="/" >
-              <Button className={classes.login}>Log In </Button>
+              <IconButton ><FiLogIn/></IconButton>
             </StyledLink>
             <StyledLink  to="/register" >
-              <Button className={classes.register}>Sign Up</Button>
+              <IconButton ><FaUserPlus/></IconButton>
             </StyledLink>
           </>
           }

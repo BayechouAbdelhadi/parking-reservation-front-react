@@ -3,12 +3,13 @@ import { GET_ERRORS, SET_CURRENT_USER ,SET_PARTS} from "./types";
 import setJWTToken from "../securityUtils/setJWTToken";
 import jwt_decode from "jwt-decode";
 import authHeader from "../securityUtils/authorisationHeader"
+import SERVER_URL from  '../securityUtils/path';
 
 export const createNewUser = (newUser, history) => async dispatch => 
 {
   
     await axios({
-      url:"https://park-reservation.herokuapp.com/api/users/register",
+      url:`${SERVER_URL}/api/users/register`,
       method:'post',
       headers: {'Access-Control-Allow-Origin': '*'},
       data: newUser})
@@ -33,7 +34,7 @@ export const login = LoginRequest => async dispatch => {
   try {
     // post => Login Request
     const res = await axios({
-      url:"https://park-reservation.herokuapp.com/api/users/login",
+      url:`${SERVER_URL}/api/users/login`,
       method:'post',
       headers: {'Access-Control-Allow-Origin': '*'},
       data: LoginRequest}

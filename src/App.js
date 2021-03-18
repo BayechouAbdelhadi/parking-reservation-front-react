@@ -13,6 +13,7 @@ import Header from './layout/Header.js';
 import Footer from './layout/Footer.js';
 import Wrapper from './layout/Wrapper.js';
 import BodyWrapper from './layout/BodyWrapper.js';
+import {IconContext} from 'react-icons';
 
 import { BrowserRouter as Router, Route,Switch } from "react-router-dom";
 import Map from './components/Map';
@@ -25,6 +26,7 @@ const App =()=> {
   });
   return(
       <Provider store={store}>
+        <IconContext.Provider value={{size:40,color:"white"}}>
               <Router>
                 <Wrapper>
                   <Header/>
@@ -40,6 +42,7 @@ const App =()=> {
                 } 
                 </Wrapper>
               </Router>
+              </IconContext.Provider>
       </Provider>
 
   )

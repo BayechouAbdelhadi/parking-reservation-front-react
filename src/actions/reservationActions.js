@@ -1,12 +1,13 @@
 import axios from "axios";
 import { GET_ERRORS ,SET_TODAY_RESERVATION} from "./types";
 import authHeader from "../securityUtils/authorisationHeader"
+import SERVER_URL from  '../securityUtils/path';
 
 export const saveSeatReservation = (reservation,history) => async dispatch => {
     // post => Login Request
     await axios(
     {
-      url:'https://park-reservation.herokuapp.com/api/seats',
+      url:`${SERVER_URL}/api/seats`,
       method:'post',
       Authorisation:authHeader,
       data: reservation
@@ -25,7 +26,7 @@ export const saveSeatReservation = (reservation,history) => async dispatch => {
     });
 }
 export const findTodayReservation = (seat) => async dispatch => {
-     await axios.get(`https://park-reservation.herokuapp.com/api/seats/${seat}`,{"Authorisation":authHeader})
+     await axios.get(`${SERVER_URL}/api/seats/${seat}`,{"Authorisation":authHeader})
     .then(response=>{
       const reservations = response.data;
       dispatch({

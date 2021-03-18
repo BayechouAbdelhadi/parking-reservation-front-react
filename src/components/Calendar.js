@@ -1,6 +1,9 @@
 import React, { useState,useEffect } from 'react';
-import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import IconButton from '@material-ui/core/IconButton';
+import { AiFillBackward as ArrowBackIcon} from "react-icons/ai";
+import { AiFillForward as ArrowForwardIosIcon} from "react-icons/ai";
+import { GiConfirmed as DoneOutlineIcon} from "react-icons/gi";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import SlotTime from './SlotTime';
@@ -15,6 +18,9 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold',
     color:'red',
   },
+  backButton:{
+    marginRight:210
+  }
 }));
 
 const Calendar1=({seat})=>{
@@ -80,31 +86,35 @@ const Calendar1=({seat})=>{
       </>
       )}
       <div style={{display:"flex",marginTop:15}}>
-          {dateSelected && <Button onClick={backToCalendar}
-          variant="contained" 
-          color="primary" 
-          disableElevation 
-          style={{marginLeft:10,marginRight:80,background:'black'}}
-          >
-          Back</Button> 
+          {dateSelected && 
+          <IconButton onClick={backToCalendar}
+            variant="contained" 
+            color="primary" 
+            disableElevation 
+            className={classes.backButton}
+        >
+          <ArrowBackIcon color="red"/>
+          </IconButton> 
           }
           {timeSelected&& 
           (
           dataCompleted? 
-          <Button 
+          <IconButton 
             onClick={book}
             variant="contained" 
             color="primary" 
             disableElevation 
-            style={{marginLeft:10,marginButtom:20,background:'green'}}>Confirm
-          </Button> :
-          <Button 
+            >
+              <DoneOutlineIcon color="green" />
+           </IconButton> :
+          <IconButton 
             onClick={showDetails}
             variant="contained" 
             color="primary" 
             disableElevation 
-            style={{marginLeft:10,marginButtom:20,background:'green'}}>Book
-          </Button> 
+            >
+              <ArrowForwardIosIcon  color="green"/> 
+          </IconButton> 
           )}
         </div>
     </div>

@@ -9,6 +9,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Avatar from '@material-ui/core/Avatar';
 import axios from 'axios';
 import authHeader from "../securityUtils/authorisationHeader"
+import SERVER_URL from  '../securityUtils/path';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,7 +43,7 @@ const slots=[
     console.log(`${dateValue.getFullYear()}-${dateValue.getMonth()+1}-${dateValue.getDate()}`);
     await axios(
       { 
-        url:`https://park-reservation.herokuapp.com/api/seats/${seat}`,
+        url:`${SERVER_URL}/api/seats/${seat}`,
         Authorisation:authHeader,
         method:"post",
         data:{date:`${dateValue.getFullYear()}-${dateValue.getMonth()+1}-${dateValue.getDate()}`}
