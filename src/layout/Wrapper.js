@@ -4,7 +4,6 @@ const Wrapper = styled.div`
   width:100%;
   margin: auto;
   margin-top:7px;
-  overflow-y:scroll; 
   `;
 
 export default Wrapper;

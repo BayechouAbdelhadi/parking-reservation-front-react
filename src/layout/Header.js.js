@@ -5,8 +5,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { Link } from "react-router-dom";
-//import { logout,findParts} from "../actions/securityActions";
-//import {useStore,useSelector,useDispatch} from "react-redux";
+import { logout,/*findParts*/} from "../actions/securityActions";
+import {useStore,useSelector,useDispatch} from "react-redux";
 import styled from 'styled-components';
 //import {resetDifference,resetIteration,clearAnswers,enableStart,start,endPart,resetAnswer,resetScore} from '../actions/actions';
 
@@ -95,51 +95,51 @@ const useStyles = makeStyles((theme) => ({
 }}));
 
 const ButtonAppBar=()=> {
-  //const dispatch =useDispatch();
+  const dispatch =useDispatch();
   const classes = useStyles();
-  /*const store=useStore();
+  const store=useStore();
   const user=useSelector(state=>state.security.user);
   const validToken=useSelector(state=>state.security.validToken);
   const play=()=>{
-    window.location.href = "/play";
+    window.location.href = "/book";
   }
   const handleLogout=()=> {
     store.dispatch(logout());
     window.location.href = "/";
   }
   const showProfile=()=> {
-    store.dispatch(findParts());
-    //window.location.href = "/profile";
+    //store.dispatch(findParts());
+    window.location.href = "/profile";
   }
   const reset=()=>{
-    dispatch(resetDifference());
+    /*dispatch(resetDifference());
     dispatch(resetIteration(0));
     dispatch(clearAnswers());
     dispatch(enableStart());
     dispatch(endPart());
     dispatch(resetAnswer());
     dispatch(resetScore());
-    dispatch(start());
+    dispatch(start());*/
 
 
-  }*/
+  }
   return (
     <div className={classes.root}>
       <AppBar className={classes.header} position="static">
         <Toolbar>
           <Typography edge="start" variant="h6" className={classes.title } >
-            <StyledLink to="/play" //onClick ={reset}
+            <StyledLink to="/book" onClick ={reset}
             >
               GeoGame
             </StyledLink>
           </Typography>
-          {/*validToken*/ true ?
+          {validToken ?
           <>
-            <StyledLink to="/profile" //onClick={showProfile}
+            <StyledLink to="/profile" onClick={showProfile}
             >
-              <Button className={classes.profileButton} >{/*user.fullName*/}</Button>
+              <Button className={classes.profileButton} >{user.fullName}</Button>
             </StyledLink>
-            <StyledLink  to="/"  //onClick={handleLogout}
+            <StyledLink  to="/"  onClick={handleLogout}
             >
                 <Button className={classes.logOutButton}>Logout</Button>
             </StyledLink>

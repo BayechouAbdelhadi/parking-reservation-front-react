@@ -4,6 +4,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import SlotTime from './SlotTime';
+import { saveSeatReservation } from "../actions/reservationActions";
+import {useStore} from "react-redux";
+import { useHistory } from "react-router-dom";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,7 +17,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Calendar1=()=>{
+const Calendar1=({seat})=>{
+  const store =useStore();
+  const history = useHistory();
   const [dateValue, setDateValue] = useState(new Date());
   const [dateSelected, setDateSelected] = useState(false);
   const [timeSelected,setTimeSelected]=useState(false);
@@ -36,10 +42,15 @@ const Calendar1=()=>{
     setDataCompleted(true);
   }
   const book=()=>{
-    
+    const seatReservation ={
+      seat:seat,
+      time:timeValue,
+      reservation_date:`${dateValue.getFullYear()}-${dateValue.getMonth()+1}-${dateValue.getDate()}`
+    }
+    store.dispatch(saveSeatReservation(seatReservation,history));
+
   }
-
-
+  
   return (
    <div >
      {
@@ -48,7 +59,7 @@ const Calendar1=()=>{
           (
           <div style={{ margin:'0 auto'}}> 
             <p className={classes.root}>Pick a time</p>
-            <SlotTime  setTimeSelected={setTimeSelected} setTimeValue={setTimeValue}/>
+            <SlotTime  setTimeSelected={setTimeSelected} setTimeValue={setTimeValue} seat={seat} dateValue={dateValue}/>
           </div>
           ):
           (<>
