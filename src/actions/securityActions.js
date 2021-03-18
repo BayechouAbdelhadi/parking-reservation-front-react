@@ -7,7 +7,11 @@ import authHeader from "../securityUtils/authorisationHeader"
 export const createNewUser = (newUser, history) => async dispatch => 
 {
   
-    await axios.post("/api/users/register", newUser)
+    await axios({
+      url:"https://park-reservation.herokuapp.com/api/users/register",
+      method:'post',
+      headers: {'Access-Control-Allow-Origin': '*'},
+      data: newUser})
     .then(response=>{
       history.push("/");
       dispatch(
@@ -28,7 +32,12 @@ export const createNewUser = (newUser, history) => async dispatch =>
 export const login = LoginRequest => async dispatch => {
   try {
     // post => Login Request
-    const res = await axios.post("/api/users/login", LoginRequest);
+    const res = await axios({
+      url:"https://park-reservation.herokuapp.com/api/users/login",
+      method:'post',
+      headers: {'Access-Control-Allow-Origin': '*'},
+      data: LoginRequest}
+      );
     // extract token from res.data
     const { token } = res.data;
     // store the token in the localStorage

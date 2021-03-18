@@ -42,7 +42,7 @@ const slots=[
     console.log(`${dateValue.getFullYear()}-${dateValue.getMonth()+1}-${dateValue.getDate()}`);
     await axios(
       { 
-        url:`/api/seats/${seat}`,
+        url:`https://park-reservation.herokuapp.com/api/seats/${seat}`,
         Authorisation:authHeader,
         method:"post",
         data:{date:`${dateValue.getFullYear()}-${dateValue.getMonth()+1}-${dateValue.getDate()}`}

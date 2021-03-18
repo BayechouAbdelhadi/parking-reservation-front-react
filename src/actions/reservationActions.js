@@ -6,7 +6,7 @@ export const saveSeatReservation = (reservation,history) => async dispatch => {
     // post => Login Request
     await axios(
     {
-      url:'/api/seats',
+      url:'https://park-reservation.herokuapp.com/api/seats',
       method:'post',
       Authorisation:authHeader,
       data: reservation
@@ -25,7 +25,7 @@ export const saveSeatReservation = (reservation,history) => async dispatch => {
     });
 }
 export const findTodayReservation = (seat) => async dispatch => {
-     await axios.get(`/api/seats/${seat}`,{"Authorisation":authHeader})
+     await axios.get(`https://park-reservation.herokuapp.com/api/seats/${seat}`,{"Authorisation":authHeader})
     .then(response=>{
       const reservations = response.data;
       dispatch({

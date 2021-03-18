@@ -48,7 +48,7 @@ const Status =({seat})=>{
     const [todayReservation,seTodayReservation] = useState([]);
     const [nbBookedSeats,setNbBookedSeats]=useState(0);
     useEffect(async ()=>{
-        await axios.get(`/api/seats/${seat}`,{"Authorisation":authHeader})
+        await axios.get(`https://park-reservation.herokuapp.com/api/seats/${seat}`,{"Authorisation":authHeader})
         .then(response=>{
             const reservations = response.data;
             seTodayReservation(reservations);
