@@ -4,7 +4,6 @@ import authHeader from "../securityUtils/authorisationHeader"
 import SERVER_URL from  '../securityUtils/path';
 
 export const saveSeatReservation = (reservation,history) => async dispatch => {
-    // post => Login Request
     await axios(
     {
       url:`${SERVER_URL}/api/seats`,

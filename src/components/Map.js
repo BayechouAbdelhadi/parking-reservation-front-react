@@ -9,6 +9,7 @@ import seats from '../data/seats';
 import parkings from '../data/parkings';
 import area from '../data/area';
 import { makeStyles } from '@material-ui/core/styles';
+import  ParkingCalendar from "./ParkingCalendar";
 
 import {seatIcon,freSeatIcon,parkingIcon} from './Icon'
 const transparentOption = { color: 'red',fillColor:"none" }
@@ -53,7 +54,7 @@ const Content =()=>{
     {parkings.map(parking=>{
         return <Marker position={[parking.coordinates[1],parking.coordinates[0]]} icon={parkingIcon} key={parking.id}>
             <Popup style={{ height:"400px"}}  key={parking.coordinates[1]}>
-                <Calendar/>
+                <ParkingCalendar park={parking.id}/>
             </Popup>
             <Tooltip  key={parking.coordinates[0]}> This is a park</Tooltip>
         </Marker>
@@ -82,10 +83,10 @@ const Map=()=>{
          style={{height:900}}
         > 
             <TileLayer
-                attribution='Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
-                url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'"
+                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-        <Content/>
+             <Content/>
 
         </MapContainer>
 

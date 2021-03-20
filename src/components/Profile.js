@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React,{useState} from 'react';
 import {useSelector,useStore} from "react-redux";
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -9,6 +9,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Box  from '@material-ui/core/Box';
+import  { Tabs, Tab, Content } from "../layout/Tab";
 //import Chart from '../styledElement/charts';
 //import  {findParts} from  '../actions/securityActions'
 
@@ -43,13 +44,39 @@ function Profile() {
     const store=useStore();
     //const parts =useSelector(state=>state.parts);
     const fullName =useSelector(state=>state.security.user.fullName);
-    useEffect(()=>{
-      //store.dispatch(findParts());
-    });
-
+    const [active, setActive] = useState(0);
+    const handleClick = e => {
+    const index = parseInt(e.target.id, 0);
+    if (index !== active) {
+      setActive(index);
+    }
+  };
     return (
         <Box className={classes.wrapper} >
-            <h3>Mr.{fullName}</h3>
+            
+            <div className="App">
+              <h1>Hi {fullName}</h1>
+              <h2>Here you can check your reservations</h2>
+
+              <Tabs>
+                <Tab onClick={handleClick} active={active === 0} id={0}>
+                  Seat
+                </Tab>
+
+                <Tab onClick={handleClick} active={active === 1} id={1}>
+                  Parking
+                </Tab>
+              </Tabs>
+              <>
+                <Content active={active === 0}>
+                  <h1>Content 1</h1>
+                </Content>
+                <Content active={active === 1}>
+                  <h1>Content 2</h1>
+                </Content>
+            </>
+            </div>
+
             {/*<div>Total parts :  {parts.length}</div>
             <Box className={classes.subWrapper} p={1}>
                 <b>Table rpresenting scores of parts played in a specific date </b>

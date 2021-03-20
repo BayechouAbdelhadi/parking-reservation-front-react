@@ -9,7 +9,7 @@ import SecuredRoute from './securityUtils/SecureRoute';
 import SignIn  from './components/SignIn';
 import SignUp  from './components/SignUp';
 import Profile from './components/Profile';
-import Header from './layout/Header.js';
+import Header from './layout/Header';
 import Footer from './layout/Footer.js';
 import Wrapper from './layout/Wrapper.js';
 import BodyWrapper from './layout/BodyWrapper.js';
