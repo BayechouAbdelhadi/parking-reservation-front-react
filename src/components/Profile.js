@@ -1,18 +1,10 @@
 import React,{useState} from 'react';
 import {useSelector,useStore} from "react-redux";
 import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
 import Box  from '@material-ui/core/Box';
 import  { Tabs, Tab, Content } from "../layout/Tab";
-//import Chart from '../styledElement/charts';
-//import  {findParts} from  '../actions/securityActions'
-
+import SeatReservation from './SeatReservation'
+import  ParkingReservation from "./ParkingReservation";
 import styled from 'styled-components';
 
 
@@ -55,8 +47,8 @@ function Profile() {
         <Box className={classes.wrapper} >
             
             <div className="App">
-              <h1>Hi {fullName}</h1>
-              <h2>Here you can check your reservations</h2>
+              <h2>Hi {fullName}</h2>
+              <h3>Here you can check your reservations</h3>
 
               <Tabs>
                 <Tab onClick={handleClick} active={active === 0} id={0}>
@@ -69,10 +61,10 @@ function Profile() {
               </Tabs>
               <>
                 <Content active={active === 0}>
-                  <h1>Content 1</h1>
+                  <SeatReservation/>
                 </Content>
                 <Content active={active === 1}>
-                  <h1>Content 2</h1>
+                  <ParkingReservation/>
                 </Content>
             </>
             </div>

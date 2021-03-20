@@ -3,13 +3,14 @@ import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import { AiFillBackward as ArrowBackIcon} from "react-icons/ai";
 import { AiFillForward as ArrowForwardIosIcon} from "react-icons/ai";
-import { GiConfirmed as DoneOutlineIcon} from "react-icons/gi";
+import { GiConfirmed as DoneOutlineIcon } from "react-icons/gi";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import SlotTime from './SlotTime';
 import { saveSeatReservation } from "../actions/reservationActions";
 import {useStore} from "react-redux";
 import { useHistory } from "react-router-dom";
+import {getTime} from "../util/formatTime";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -85,7 +86,8 @@ const Calendar1=({seat})=>{
         />
       </>
       )}
-      <div style={{display:"flex",marginTop:15}}>
+      <div style={{display:"flex",justifyContent:"space-between",marginRight:0}}>
+
           {dateSelected && 
           <IconButton onClick={backToCalendar}
             variant="contained" 
@@ -122,15 +124,3 @@ const Calendar1=({seat})=>{
 }
 export default Calendar1;
 
-const getTime=(index)=>{
-  switch(index){
-    case 1:return "from 8h to 10h" ;
-    case 2:return "from 10h to 12h" ;
-    case 3 :return "from 14h to 16h" ;
-    case 4:return "from 16h to 18h" ;
-    default:return "";
-  }
-
-
-
-}

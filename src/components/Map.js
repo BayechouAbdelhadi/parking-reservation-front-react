@@ -40,23 +40,27 @@ const Content =()=>{
         position={[seat.coordinates[1],seat.coordinates[0]]} 
         onMouseOver={(e)=>handleMouseOver(e)}
         onMouseOut={(e)=>handleMouseOut(e)}
-          //icon={freSeatIcon}
+          icon={seatIcon}
           key={seat.id}
         >
             <Popup style={{ height:"400px"}}  key={seat.coordinates[1]}>
                 <Calendar seat={seat.id}/>
             </Popup>
-            <Tooltip className={classes.tooltip} key={seat.coordinates[0]}> <Status seat={seat.id}/></Tooltip>
+            <Tooltip className={classes.tooltip} key={seat.coordinates[0]}> 
+                <Status seat={seat.id}/>
+            </Tooltip>
 
         </Marker>
     })    
     }
     {parkings.map(parking=>{
-        return <Marker position={[parking.coordinates[1],parking.coordinates[0]]} icon={parkingIcon} key={parking.id}>
+        return <Marker position={[parking.coordinates[1],parking.coordinates[0]]}
+                icon={parkingIcon} key={parking.id}
+            >
             <Popup style={{ height:"400px"}}  key={parking.coordinates[1]}>
                 <ParkingCalendar park={parking.id}/>
             </Popup>
-            <Tooltip  key={parking.coordinates[0]}> This is a park</Tooltip>
+            <Tooltip  key={parking.coordinates[0]}> Park</Tooltip>
         </Marker>
     })    
     }

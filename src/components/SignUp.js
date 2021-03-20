@@ -140,9 +140,6 @@ const  SignUp =() =>{
           >
             Sign Up
           </Button>
-              <Link to="/" >
-                Log In
-              </Link>
         </form>
       </div>
     </Container>
