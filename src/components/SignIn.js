@@ -7,13 +7,13 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import {useSelector} from 'react-redux';
 import { useHistory } from "react-router-dom";
 import { login } from "../actions/securityActions";
 import {useStore} from "react-redux";
 import { Link } from "react-router-dom";
+import { makeStyles } from '@material-ui/core/styles';
 
 
 
@@ -31,10 +31,21 @@ const useStyles = makeStyles((theme) => ({
   form: {
     width:'100%', // Fix IE 11 issue.
     marginTop: theme.spacing(1),
+
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  error:{
+    color:'red',
+    fontWeight:'bold',
+    fontSize:16
+  }
+  ,
+  Container:{
+    backgroundColor:'white'
+  }
+  
 }));
 
 const  SignIn =() =>{
@@ -66,7 +77,7 @@ const  SignIn =() =>{
 const redirect=()=>history.push('/register');
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="xs"className={classes.container} >
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
@@ -89,7 +100,7 @@ const redirect=()=>history.push('/register');
             onChange={onChange}
           />
           {errors.username && (
-                    <div >{loginState.errors.username}</div>
+                    <div className={classes.error} >{loginState.errors.username}</div>
           )}
           <TextField
             variant="outlined"
@@ -104,7 +115,7 @@ const redirect=()=>history.push('/register');
             onChange={onChange}
           />
           {loginState.errors.password && (
-                    <div >{loginState.errors.password}</div>
+                    <div className={classes.error}>{loginState.errors.password}</div>
                   )}
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}

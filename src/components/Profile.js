@@ -5,7 +5,6 @@ import Box  from '@material-ui/core/Box';
 import  { Tabs, Tab, Content } from "../layout/Tab";
 import SeatReservation from './SeatReservation'
 import  ParkingReservation from "./ParkingReservation";
-import styled from 'styled-components';
 
 
 const useStyles = makeStyles({
@@ -23,7 +22,8 @@ const useStyles = makeStyles({
     height:100
   },
   wrapper:{
-    maxWidth: 400,
+    overFlowY:'scroll',
+    width: '100%',
     maxHeight:500,
     margin:'0 auto',
     marginTop:10,
@@ -68,34 +68,6 @@ function Profile() {
                 </Content>
             </>
             </div>
-
-            {/*<div>Total parts :  {parts.length}</div>
-            <Box className={classes.subWrapper} p={1}>
-                <b>Table rpresenting scores of parts played in a specific date </b>
-            <TableContainer className={classes.container}component={Paper}>
-            <Table className={classes.table}  size="small" aria-label="a dense table">
-                <TableHead>
-                <TableRow>
-                    <TableCell>score (/3)</TableCell>
-                    <TableCell align="right">Date</TableCell>
-                </TableRow>
-                </TableHead>
-                <TableBody>
-                {parts.map((row) => (
-                    <TableRow  key={row.id}>
-                    <TableCell >{row.score}</TableCell>
-                    <TableCell align="right">{row.created_At}</TableCell>
-                    </TableRow>
-                ))}
-                </TableBody>
-            </Table>
-            </TableContainer>
-            </Box>
-            <Box  className={classes.subWrapper} p={1}>
-                <b>The chart bellow shows your evolution in time </b>
-                <Chart parts={parts}/>
-            </Box>
-                */}
         </Box>
 );
 

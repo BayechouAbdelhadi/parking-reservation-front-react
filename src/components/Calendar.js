@@ -11,6 +11,8 @@ import { saveSeatReservation } from "../actions/reservationActions";
 import {useStore} from "react-redux";
 import { useHistory } from "react-router-dom";
 import {getTime} from "../util/formatTime";
+import formatDate from "../util/formatDate";
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -52,7 +54,7 @@ const Calendar1=({seat})=>{
     const seatReservation ={
       seat:seat,
       time:timeValue,
-      reservation_date:`${dateValue.getFullYear()}-${dateValue.getMonth()+1}-${dateValue.getDate()}`
+      reservation_date:formatDate(dateValue)
     }
     store.dispatch(saveSeatReservation(seatReservation,history));
 

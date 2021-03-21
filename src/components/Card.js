@@ -9,8 +9,10 @@ import {getTime} from "../util/formatTime";
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 275,
+    minWidth: 300,
+    maxWidth: 300,
     marginTop:20,
+    marginRight:5,
     border:'4px',
     textAlign:'left'
   },
@@ -31,13 +33,10 @@ export default function SimpleCard({reservation,seat}) {
             <div variant="h5" component="h2" gutterBottom>
             {bull} <b>Id of seat </b>: {seat ?reservation.seat:reservation.park}
             </div>
-            <div variant="h5" component="h5">
-            {bull} <b>Created at : </b>{reservation.created_At}
-            </div>
             { seat ?
               <>
               <div variant="h5" component="h3">
-              {bull} <b>Reservation date : </b>{reservation.created_At}
+              {bull} <b>Reservation date : </b>{reservation.reservationdate}
               </div>
               <div variant="h5" component="h3">
               {bull} <b>Reservation time : </b>{getTime(reservation.time)}
