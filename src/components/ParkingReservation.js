@@ -26,9 +26,6 @@ export default function SpacingGrid() {  const classes = useStyles();
       async function fetch(){
         await axios.get(`${SERVER_URL}/api/parking`,{"Authorisation":authHeader})
         .then(response=>{
-            console.log("coming from "+response.data);
-            console.table(response.data);
-
             setReservations(response.data);
         })
         .catch(error=>{

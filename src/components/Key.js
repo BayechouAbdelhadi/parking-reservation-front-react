@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -8,10 +8,6 @@ const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
     },
-    paper: {
-        height: 140,
-        width: 100,
-    },
     control: {
         padding: theme.spacing(2),
     },
@@ -20,22 +16,28 @@ const useStyles = makeStyles((theme) => ({
         marginRight: 20,
         marginBottom: 20,
         width: 120,
-        height: 100,
+        height: 130,
         padding: 10,
         display: 'block',
-        justifyContent:'center'
+        justifyContent:'center',
+        textAlign:'center',
+        boxShadow:' 0px 0px 5px 1px'
+        //backgroundColor:'lightgray'
     }
     ,
     availabel: {
-        color: 'green',
+        color: 'rgb(74,184,49)',
         fontWeight: 'bold',
-        fontSize: '12'
+        fontSize: '14',
     },
     unavailabel: {
-        color: 'red',
+        color:'rgb(184,49,49)',
         fontWeight: 'bold',
-        fontSize: '12'
+        fontSize: '14'
     },
+    type:{
+        fontWeight:'bold'
+    }
 }));
 
 export default function Key() {
@@ -46,38 +48,31 @@ export default function Key() {
                 <Grid container justify="center" spacing={2}>
                     <Grid key={1} spacing={2} >
                         <Paper className={classes.paper}>
-                            <img src='/seat.svg' width={40} height={40} />
-                            <div>seat</div>
-                        </Paper>
-                    </Grid>
-                    <Grid key={2} spacing={2} >
-                        <Paper className={classes.paper}>
-                            <img src='/seat.svg' width={40} height={40} />
-                            <div>park </div>
-                        </Paper>
-                    </Grid>
-                    <Grid key={1} spacing={2} >
-                        <Paper className={classes.paper}>
-                            <img src='/seat.svg' width={40} height={40} />
                             <div className={classes.availabel}>available</div>
+                            <img src='/setGreen.png' style={{ marginTop:10,marginBottom:10}}width={40} height={40} alt="" />
+                            <div className={classes.type}>Seat </div>
                         </Paper>
                     </Grid>
                     <Grid key={2} spacing={2} >
                         <Paper className={classes.paper}>
-                            <img src='/seat.svg' width={40} height={40} />
                             <div className={classes.unavailabel}>unavailable </div>
+                            <img src='/setRed.png' style={{ marginTop:10,marginBottom:10}} width={40} height={40} alt=""/>
+                            <div className={classes.type}>Seat </div>
+
                         </Paper>
                     </Grid>
                     <Grid key={3} spacing={2} >
                         <Paper className={classes.paper}>
-                            <img src='/seat.svg' width={40} height={40} />
                             <div className={classes.availabel}>available</div>
+                            <img src='/parckGreen.png' width={80} height={60}alt="" />
+                            <div className={classes.type}>Park </div>
                         </Paper>
                     </Grid>
                     <Grid key={4} spacing={2} >
                         <Paper className={classes.paper}>
-                            <img src='/seat.svg' width={40} height={40} />
-                            <div className={classes.unavailabel}>unavailable </div>
+                           <div className={classes.unavailabel}>unavailable </div>
+                            <img src='/parckRed.png' width={80} height={60} alt=""/>
+                           <div className={classes.type}>Park </div>
                         </Paper>
                     </Grid>
 

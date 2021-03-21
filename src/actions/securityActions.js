@@ -1,8 +1,7 @@
 import axios from "axios";
-import { GET_ERRORS, SET_CURRENT_USER ,SET_PARTS} from "./types";
+import { GET_ERRORS, SET_CURRENT_USER } from "./types";
 import setJWTToken from "../securityUtils/setJWTToken";
 import jwt_decode from "jwt-decode";
-import authHeader from "../securityUtils/authorisationHeader"
 import SERVER_URL from  '../securityUtils/path';
 
 export const createNewUser = (newUser, history,setShoudDisableSignUp) => async dispatch => 
@@ -73,42 +72,3 @@ export const logout = () => dispatch => {
     payload: {}
   });
 };
-/*
-export const saveScore = score => async dispatch => {
-    // post => Login Request
-    await axios(
-    {
-      url:'/api/parts',
-      method:'post',
-      data: score
-    }
-    ).catch(err=>
-    {
-      dispatch(
-        {
-          type: GET_ERRORS,
-          payload: err.response.data
-        });
-      
-    });
-}
-
-export const findParts = () => async dispatch => {
-     await axios.get("/api/parts",{"Authorisation":authHeader})
-    .then(response=>{
-      const parts = response.data;
-      dispatch({
-      type:SET_PARTS ,
-      payload: parts 
-      })
-    })
-    .catch(error=>{
-      dispatch(
-        {
-          type: GET_ERRORS,
-          payload: error.response.data
-        });
-    });
-    
-  }
-  */

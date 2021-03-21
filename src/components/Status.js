@@ -1,7 +1,4 @@
-import React,{useState,useEffect} from 'react';
-import axios from 'axios';
-import authHeader from "../securityUtils/authorisationHeader"
-import SERVER_URL from  '../securityUtils/path';
+import React from 'react';
 import Box from '@material-ui/core/Box';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
@@ -27,23 +24,9 @@ function CircularProgressWithLabel(props) {
       </Box>
     );
   }
-const Status =({seat})=>{
-    const [nbBookedSeats,setNbBookedSeats]=useState(0);
-    useEffect(async ()=>{
-            await axios.get(`${SERVER_URL}/api/seats/${seat}`,{"Authorisation":authHeader})
-            .then(response=>{
-                const reservations = response.data;
-                setNbBookedSeats(reservations.length);
-                console.log(reservations.length);
-            })
-            .catch(error=>{
-                //console.log(error);
-            });
-
-    },[]);
+const Status =({nbBookedSeats})=>{
     return(
         <CircularProgressWithLabel value={nbBookedSeats*25} size={150}  color ={nbBookedSeats===4?'secondary':'primary'}/>
     );
 }
-
 export default Status ;

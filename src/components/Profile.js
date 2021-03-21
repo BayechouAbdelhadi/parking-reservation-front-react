@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import {useSelector,useStore} from "react-redux";
+import {useSelector} from "react-redux";
 import { makeStyles } from '@material-ui/core/styles';
 import Box  from '@material-ui/core/Box';
 import  { Tabs, Tab, Content } from "../layout/Tab";
@@ -20,7 +20,6 @@ const useStyles = makeStyles({
 
 function Profile() {
     const classes = useStyles();
-    const store=useStore();
     const fullName =useSelector(state=>state.security.user.fullName);
     const [active, setActive] = useState(0);
     const handleClick = e => {

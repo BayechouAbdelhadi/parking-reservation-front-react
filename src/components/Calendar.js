@@ -21,8 +21,9 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold',
     color:'red',
   },
-  backButton:{
-    marginRight:210
+  validateButton:{
+    marginBottom:5,
+    marginRight:5
   }
 }));
 
@@ -108,6 +109,7 @@ const Calendar1=({seat})=>{
             variant="contained" 
             color="primary" 
             disableElevation 
+            className={classes.validateButton}
             >
               <DoneOutlineIcon color="green" />
            </IconButton> :

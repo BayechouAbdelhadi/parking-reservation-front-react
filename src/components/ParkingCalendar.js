@@ -22,6 +22,12 @@ function isWithinRange(date, range) {
 function isWithinRanges(date, ranges) {
     return ranges.some(range => isWithinRange(date, range));
 }
+function checkFirstDate(date, ranges) {
+    return ranges.some(range => { return sameDate(date,range[0])});
+}
+function sameDate(dat1,dat2){
+    return dat1.getDate()===dat2.getDate()&& dat1.getFullYear()===dat2.getFullYear()&&dat1.getMonth()===dat2.getMonth()
+}
 function rangeIntersection(selectedrange, disabledRange) {
     return selectedrange[0] < disabledRange[0] && selectedrange[1] > disabledRange[1];
 }
@@ -30,10 +36,14 @@ const useStyles = makeStyles((theme) => ({
         fontSize: 20,
         fontWeight: 'bold',
         color: 'red',
+        padding:10,
+        maeginBottom:10,
+        textAlign:'center'
     },
-    backButton: {
-        marginRight: 210
-    }
+    validateButton:{
+        marginBottom:5,
+        marginRight:5
+      }
 }));
 const ParkingCalendar = ({ park }) => {
     const classes = useStyles();
@@ -41,7 +51,6 @@ const ParkingCalendar = ({ park }) => {
     const history = useHistory();
     const [dateValue, setDateValue] = useState([]);
     const [datesSelected, setDatesSelected] = useState(false);
-    const [reservations, setResevations] = useState([]);
     const [disabledRanges, setDisabledRanges] = useState([]);
     const [errorRange, setErrorRange] = useState(false);
 
@@ -51,7 +60,7 @@ const ParkingCalendar = ({ park }) => {
 
     function tileDisabled({ date, view }) {
         if (view === 'month') {
-            return isWithinRanges(date, disabledRanges);
+            return isWithinRanges(date, disabledRanges)||checkFirstDate(date, disabledRanges);
         }
     }
 
@@ -78,13 +87,10 @@ const ParkingCalendar = ({ park }) => {
         async function fetch(){
             await axios.get(`${SERVER_URL}/api/parking/${park}`, { "Authorisation": authHeader })
             .then(response => {
-                setResevations(response.data);
-                console.log(response.data);
                 const ranges = response.data.map(res => {
                     const range = [new Date(res.startDate), new Date(res.endDate)];
                     return range;
                 });
-                console.table(ranges);
                 setDisabledRanges(ranges);
             })
             .catch(error => {
@@ -118,6 +124,7 @@ const ParkingCalendar = ({ park }) => {
                                 variant="contained"
                                 color="primary"
                                 disableElevation
+                                className={classes.validateButton}
                             >
                                 <DoneOutlineIcon color="green" onClick={book} />
                             </IconButton>

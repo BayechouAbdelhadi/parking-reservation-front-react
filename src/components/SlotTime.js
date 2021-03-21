@@ -57,7 +57,6 @@ const SlotTime = ({ setTimeSelected, setTimeValue, seat, dateValue }) => {
   return (
     <List dense className={classes.root} >
       {slots.map((slot) => {
-        const labelId = `chose a slot`;
         return (
           <ListItem key={slot.key} button
             selected={selectedIndex === slot.key}

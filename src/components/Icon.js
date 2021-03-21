@@ -9,7 +9,7 @@ export const parkingIcon = new Icon({
 );
 
 export const seatIcon = new Icon({
-    iconUrl:'/seat.svg',
+    iconUrl:'/setGreen.png',
     iconSize:     [35, 30],     // size of the icon
    // iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
     shadowAnchor: [4, 62],  // the same for the shadow
@@ -17,13 +17,36 @@ export const seatIcon = new Icon({
 }
 );
 
-export const freSeatIcon = new Icon({
-    iconUrl:'/freeSeat.png',
-    iconSize:     [20, 40], // size of the icon
+export const freeSeatIcon = new Icon({
+    iconUrl:'/setGreen.png',
+    iconSize:     [25, 30], // size of the icon
    // iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
     shadowAnchor: [4, 62],  // the same for the shadow
     popupAnchor:  [-3, -76] ,
 }
 );
- 
+export const nonFreeSeatIcon = new Icon({
+    iconUrl:'/setRed.png',
+    iconSize:     [25, 30], // size of the icon
+   // iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] ,
+}
+);
 
+export const freeParkingIcon = new Icon({
+    iconUrl:'/parckGreen.png',
+    iconSize:     [80, 60], // size of the icon
+   // iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] ,
+}
+);
+export const nonFreeParkingIcon = new Icon({
+    iconUrl:'/parckRed.png',
+    iconSize:     [80, 60], // size of the icon
+   // iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] ,
+}
+);
