@@ -8,19 +8,6 @@ import  ParkingReservation from "./ParkingReservation";
 
 
 const useStyles = makeStyles({
-  table: {
-      
-  },
-  subWrapper:{
-    border:'solid',
-    borderRadius:'5%',
-    width:400,
-    marginTop :10,
-  },
-  container:{
-    OverflowY:'scroll',
-    height:100
-  },
   wrapper:{
     overFlowY:'scroll',
     width: '100%',
@@ -34,7 +21,6 @@ const useStyles = makeStyles({
 function Profile() {
     const classes = useStyles();
     const store=useStore();
-    //const parts =useSelector(state=>state.parts);
     const fullName =useSelector(state=>state.security.user.fullName);
     const [active, setActive] = useState(0);
     const handleClick = e => {

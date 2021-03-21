@@ -5,7 +5,7 @@ import jwt_decode from "jwt-decode";
 import authHeader from "../securityUtils/authorisationHeader"
 import SERVER_URL from  '../securityUtils/path';
 
-export const createNewUser = (newUser, history) => async dispatch => 
+export const createNewUser = (newUser, history,setShoudDisableSignUp) => async dispatch => 
 {
   
     await axios({
@@ -14,6 +14,7 @@ export const createNewUser = (newUser, history) => async dispatch =>
       headers: {'Access-Control-Allow-Origin': '*'},
       data: newUser})
     .then(response=>{
+      setShoudDisableSignUp(false);
       history.push("/");
       dispatch(
       {
@@ -21,6 +22,7 @@ export const createNewUser = (newUser, history) => async dispatch =>
         payload: {}
       });
     }).catch(error=>{
+      setShoudDisableSignUp(false);
       console.log(error);
       dispatch(
       {
@@ -30,7 +32,7 @@ export const createNewUser = (newUser, history) => async dispatch =>
     });
 };
 
-export const login = LoginRequest => async dispatch => {
+export const login = (LoginRequest,setShoudDisableSignIn) => async dispatch => {
   try {
     // post => Login Request
     const res = await axios({
@@ -48,12 +50,13 @@ export const login = LoginRequest => async dispatch => {
     // decode token on React
     const decoded = jwt_decode(token);
     // dispatch to our securityReducer
+    setShoudDisableSignIn(false);
     dispatch({
       type:SET_CURRENT_USER ,
       payload: decoded
     });
   } catch (err) 
-  {
+  { setShoudDisableSignIn(false);
     dispatch(
     {
       type: GET_ERRORS,

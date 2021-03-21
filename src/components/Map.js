@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useRef, useEffect } from "react";
+import React, { useCallback, useState } from "react";
 import { MapContainer, useMapEvent, TileLayer, Marker, Popup, Tooltip, Polygon } from 'react-leaflet';
 import 'leaflet-fullscreen/dist/Leaflet.fullscreen.js'
 import 'leaflet/dist/leaflet.css'
@@ -10,6 +10,7 @@ import seats from '../data/seats';
 import parkings from '../data/parkings';
 import area from '../data/area';
 import { makeStyles } from '@material-ui/core/styles';
+import Key from "./Key";
 import ParkingCalendar from "./ParkingCalendar";
 
 import { seatIcon, freSeatIcon, parkingIcon } from './Icon'
@@ -23,6 +24,11 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: ' 0 0 5px 5px rgb(0, 94, 255)',
 
     },
+    paper:{
+        marginTop: 10, 
+        padding:10,
+        display: 'block'
+    }
 
 }));
 
@@ -69,33 +75,14 @@ const Content = () => {
         </>)
 }
 const Map = () => {
+    const classes = useStyles();
     const [showKey, setShowKey] = useState(false);
     return (
         <div>
             {showKey &&
                 <div style={{ backgroundColor: 'white' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', margin: '0 auto', width: '100%', backgroundColor: 'white', padding: 10 }}>
-                        <div style={{ marginTop: 10, display: 'block' }}>
-                            <img src='/seat.svg' width={40} height={40} />
-                            <div>available seat</div>
-                        </div>
-                        <div style={{ marginTop: 10 }}>
-                            <img src='/seat.svg' width={40} height={40} />
-                            <div>unavaillable seat</div>
-                        </div>
-
-                        <div style={{ marginTop: 10 }}>
-                            <img src='/seat.svg' width={40} height={40} />
-                            <div>availlable parking</div>
-                        </div>
-
-                        <div style={{ marginTop: 10 }}>
-                            <img src='/seat.svg' width={40} height={40} />
-                            <div>unavaillable parking</div>
-                        </div>
-
-                    </div>
-
+                    <div style={{ margin: '0 auto' ,fontWeight:'bold',fontSeize:18}}> state for today</div>
+                        <Key/>
                 </div>
             }
             <MapContainer

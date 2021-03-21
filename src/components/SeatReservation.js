@@ -22,7 +22,8 @@ const useStyles = makeStyles((theme) => ({
 export default function SpacingGrid() {  const classes = useStyles();
 
   const [reservations,setReservations]=useState([]);
-  useEffect(async ()=>{
+  useEffect( ()=>{
+    async function fetch() {
       await axios.get(`${SERVER_URL}/api/seats`,{"Authorisation":authHeader})
       .then(response=>{
           setReservations(response.data);
@@ -30,6 +31,8 @@ export default function SpacingGrid() {  const classes = useStyles();
       .catch(error=>{
           console.log(error);
       });
+    }
+      fetch();
   },[]);
 
   return (

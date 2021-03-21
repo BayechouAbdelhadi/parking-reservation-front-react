@@ -2,11 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import Checkbox from '@material-ui/core/Checkbox';
-import Avatar from '@material-ui/core/Avatar';
 import axios from 'axios';
 import authHeader from "../securityUtils/authorisationHeader"
 import SERVER_URL from '../securityUtils/path';
@@ -30,9 +26,7 @@ const slots = [
 ];
 const SlotTime = ({ setTimeSelected, setTimeValue, seat, dateValue }) => {
   const classes = useStyles();
-  const [selected, setSelected] = useState("");
   const [todayReservation, seTodayReservation] = useState([]);
-
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
   function handleChange(e, index) {
@@ -40,23 +34,25 @@ const SlotTime = ({ setTimeSelected, setTimeValue, seat, dateValue }) => {
     setTimeSelected(true);
     setTimeValue(index);
   }
-  useEffect(async () => {
-    console.log(formatDate(dateValue));
-    await axios(
-      {
-        url: `${SERVER_URL}/api/seats/${seat}`,
-        Authorisation: authHeader,
-        method: "post",
-        data: { date: formatDate(dateValue) }
-      })
-      .then(response => {
-        const reservations = response.data;
-        console.log(reservations);
-        seTodayReservation(reservations);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+  useEffect( () => {
+    async function fetch (){
+      await axios(
+        {
+          url: `${SERVER_URL}/api/seats/${seat}`,
+          Authorisation: authHeader,
+          method: "post",
+          data: { date: formatDate(dateValue) }
+        })
+        .then(response => {
+          const reservations = response.data;
+          console.log(reservations);
+          seTodayReservation(reservations);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+    fetch();
   }, [dateValue]);
   return (
     <List dense className={classes.root} >

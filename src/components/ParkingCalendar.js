@@ -35,17 +35,6 @@ const useStyles = makeStyles((theme) => ({
         marginRight: 210
     }
 }));
-
-/*const disabledRanges = [
-    [
-        new Date(2021,2,19),
-        new Date(2021,2,25),
-    ],
-    [
-        new Date(2021,3,19),
-        new Date(2021,3,25),
-    ],
-];*/
 const ParkingCalendar = ({ park }) => {
     const classes = useStyles();
     const store = useStore();
@@ -85,8 +74,9 @@ const ParkingCalendar = ({ park }) => {
         store.dispatch(saveParkingReservation(parkReservation, history));
     }
 
-    useEffect(async () => {
-        await axios.get(`${SERVER_URL}/api/parking/${park}`, { "Authorisation": authHeader })
+    useEffect( () => {
+        async function fetch(){
+            await axios.get(`${SERVER_URL}/api/parking/${park}`, { "Authorisation": authHeader })
             .then(response => {
                 setResevations(response.data);
                 console.log(response.data);
@@ -100,7 +90,10 @@ const ParkingCalendar = ({ park }) => {
             .catch(error => {
                 console.log(error);
             });
+        }
+        fetch();
     }, []);
+        
 
     return (
         <div>

@@ -1,5 +1,4 @@
 import {Icon} from 'leaflet';
-import {BiChair} from "react-icons/bi";
 export const parkingIcon = new Icon({
     iconUrl:'/parking.png',
     iconSize:     [38, 50], // size of the icon

@@ -32,13 +32,18 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  error:{
+    color:'red',
+    fontWeight:'bold',
+    fontSize:16
+  }
 }));
 
 const  SignUp =() =>{
     const classes = useStyles();
     const store =useStore();
     const [registrationState,setregistrationState]=useState({username: "",password: "",fullName:"",confirmPassword:"",roles:'user',errors: {}});
-    const security=useSelector(state=>state.security);
+    const [shoudDisableSignUp,setShoudDisableSignUp]=useState(false);
     const errors=useSelector(state=>state.errors);
     const history =useHistory();
 
@@ -50,6 +55,7 @@ const  SignUp =() =>{
       setregistrationState({ ...registrationState,[e.target.name]: e.target.value });
     }
     const onSubmit =(e)=> {
+      setShoudDisableSignUp(true);
       e.preventDefault();
       const registrationRequest = {
         fullName:registrationState.fullName,
@@ -58,7 +64,7 @@ const  SignUp =() =>{
         confirmPassword:registrationState.confirmPassword,
         roles:registrationState.roles
       };
-      store.dispatch(createNewUser(registrationRequest,history));
+      store.dispatch(createNewUser(registrationRequest,history,setShoudDisableSignUp));
     }
 
   return (
@@ -85,7 +91,7 @@ const  SignUp =() =>{
             onChange={onChange}
           />
           {errors.fullName && (
-                    <div >{registrationState.errors.fullName}</div>
+                    <div className={classes.error} >{registrationState.errors.fullName}</div>
           )}
           <TextField
             variant="outlined"
@@ -100,7 +106,7 @@ const  SignUp =() =>{
             onChange={onChange}
           />
           {errors.username && (
-                    <div >{registrationState.errors.username}</div>
+                    <div className={classes.error} >{registrationState.errors.username}</div>
           )}
           <TextField
             variant="outlined"
@@ -114,7 +120,7 @@ const  SignUp =() =>{
             autoComplete="current-password"
             onChange={onChange}
           />{errors.password && (
-            <div >{registrationState.errors.password}</div>
+            <div className={classes.error} >{registrationState.errors.password}</div>
   )}
           <TextField
             variant="outlined"
@@ -129,7 +135,7 @@ const  SignUp =() =>{
             onChange={onChange}
           />
           {registrationState.errors.confirmPassword && (
-                    <div >{registrationState.errors.confirmPassword}</div>
+                    <div className={classes.error} >{registrationState.errors.confirmPassword}</div>
                   )}
           <Button
             type="submit"
@@ -137,8 +143,9 @@ const  SignUp =() =>{
             variant="contained"
             color="primary"
             className={classes.submit}
+            disabled={shoudDisableSignUp}
           >
-            Sign Up
+            {shoudDisableSignUp?'connecting....':'Sign Up'}
           </Button>
         </form>
       </div>

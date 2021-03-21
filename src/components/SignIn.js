@@ -54,6 +54,7 @@ const  SignIn =() =>{
     const [loginState,setloginState]=useState({username: "",password: "",errors: {}});
     const security=useSelector(state=>state.security);
     const errors=useSelector(state=>state.errors);
+    const [shoudDisableSignIn,setShoudDisableSignIn]=useState(false);
     const history =useHistory();
 
     useEffect(()=>{
@@ -67,12 +68,13 @@ const  SignIn =() =>{
       setloginState({ ...loginState,[e.target.name]: e.target.value });
     }
     const onSubmit =(e)=> {
+      setShoudDisableSignIn(true);
       e.preventDefault();
       const loginRequest = {
         username: loginState.username,
         password: loginState.password
       };
-      store.dispatch(login(loginRequest));
+      store.dispatch(login(loginRequest,setShoudDisableSignIn));
     }
 const redirect=()=>history.push('/register');
 
@@ -127,8 +129,9 @@ const redirect=()=>history.push('/register');
             variant="contained"
             color="primary"
             className={classes.submit}
+            disabled={shoudDisableSignIn}
           >
-            Sign In
+             {shoudDisableSignIn?'connecting....':'Sign In '}
           </Button>
           <Grid container>
             <Grid item>
