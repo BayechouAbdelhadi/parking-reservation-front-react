@@ -37,7 +37,7 @@ function Profile() {
 
               <Tabs>
                 <Tab onClick={handleClick} active={active === 0} id={0}>
-                مقعد
+                جلسة
                 </Tab>
 
                 <Tab onClick={handleClick} active={active === 1} id={1}>

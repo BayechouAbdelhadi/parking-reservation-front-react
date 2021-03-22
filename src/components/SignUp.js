@@ -31,6 +31,9 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  disable: {
+    backgroundColor: 'lightgray',
+  },
   error:{
     color:'red',
     fontWeight:'bold',
@@ -142,7 +145,7 @@ const  SignUp =() =>{
             fullWidth
             variant="contained"
             color="primary"
-            className={classes.submit}
+            className={shoudDisableSignUp?classes.disable:classes.submit}
             disabled={shoudDisableSignUp}
           >
             {shoudDisableSignUp?<div style={{color:"brown"}}>....جاري التوصيل بالخادم </div>:'اشتراك '}

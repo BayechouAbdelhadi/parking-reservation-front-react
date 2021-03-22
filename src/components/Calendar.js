@@ -87,6 +87,7 @@ const Calendar1=({seat})=>{
           onChange={(e)=>onDateSelcted(e)}
           value={dateValue}
           minDate={new Date((Date.now()))}
+          locale="en-US"
         />
       </>
       )}

@@ -7,6 +7,8 @@ import Paper from '@material-ui/core/Paper';
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
+        maxWidth:100,
+        marginLeft:10
     },
     control: {
         padding: theme.spacing(2),
@@ -15,9 +17,9 @@ const useStyles = makeStyles((theme) => ({
         marginTop: 20,
         marginRight: 20,
         marginBottom: 20,
-        width: 120,
-        height: 130,
-        padding: 10,
+        width: 80,
+        height: 90,
+        padding: 4,
         display: 'block',
         justifyContent:'center',
         textAlign:'center',
@@ -49,29 +51,29 @@ export default function Key() {
                     <Grid key={1} spacing={2} >
                         <Paper className={classes.paper}>
                             <div className={classes.availabel}>متوفر</div>
-                            <img src='/setGreen.png' style={{ marginTop:10,marginBottom:10}}width={40} height={40} alt="" />
-                            <div className={classes.type}>مقعد </div>
+                            <img src='/setGreen.png' style={{ marginTop:3,marginBottom:3}}width={40} height={40} alt="" />
+                            <div className={classes.type}>جلسة </div>
                         </Paper>
                     </Grid>
                     <Grid key={2} spacing={2} >
                         <Paper className={classes.paper}>
                             <div className={classes.unavailabel}>غير متوفر</div>
-                            <img src='/setRed.png' style={{ marginTop:10,marginBottom:10}} width={40} height={40} alt=""/>
-                            <div className={classes.type}>مقعد </div>
+                            <img src='/setRed.png' style={{ marginTop:3,marginBottom:3}} width={40} height={40} alt=""/>
+                            <div className={classes.type}>جلسة </div>
 
                         </Paper>
                     </Grid>
                     <Grid key={3} spacing={2} >
                         <Paper className={classes.paper}>
                             <div className={classes.availabel}>متوفر</div>
-                            <img src='/parckGreen.png' width={80} height={60}alt="" />
+                            <img src='/parckGreen.png' style={{ marginTop:3,marginBottom:3}} width={60} height={40}alt="" />
                             <div className={classes.type}>موقف </div>
                         </Paper>
                     </Grid>
                     <Grid key={4} spacing={2} >
                         <Paper className={classes.paper}>
                            <div className={classes.unavailabel}>غير متوفر</div>
-                            <img src='/parckRed.png' width={80} height={60} alt=""/>
+                            <img src='/parckRed.png' style={{  marginTop:3,marginBottom:3}} width={60} height={40} alt=""/>
                            <div className={classes.type}>موقف </div>
                         </Paper>
                     </Grid>

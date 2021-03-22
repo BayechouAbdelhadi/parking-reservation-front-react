@@ -135,7 +135,7 @@ const ParkingCalendar = ({ park }) => {
                             onChange={dateSelected}
                             tileDisabled={tileDisabled}
                             minDate={new Date((Date.now()))}
-                            //value={dateValue}
+                            locale="en-US"
                             view="month"
                             selectRange
                         >

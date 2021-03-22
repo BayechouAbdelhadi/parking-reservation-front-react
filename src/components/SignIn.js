@@ -36,6 +36,9 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  disable: {
+    backgroundColor: 'lightgray',
+  },
   error:{
     color:'red',
     fontWeight:'bold',
@@ -128,7 +131,7 @@ const redirect=()=>history.push('/register');
             fullWidth
             variant="contained"
             color="primary"
-            className={classes.submit}
+            className={!shoudDisableSignIn?classes.submit:classes.disable}
             disabled={shoudDisableSignIn}
           >
              {shoudDisableSignIn?<div style={{color:"brown"}}>....جاري التوصيل بالخادم </div>:'تسجيل الدخول '}
