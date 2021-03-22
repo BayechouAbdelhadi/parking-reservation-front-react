@@ -3,6 +3,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
+import { Input } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -73,7 +74,7 @@ const  SignUp =() =>{
 
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+        اشتراك
         </Typography>
         <form className={classes.form} noValidate onSubmit={onSubmit}>
         <TextField
@@ -82,7 +83,7 @@ const  SignUp =() =>{
             required
             fullWidth
             id="fullName"
-            label="Full Name "
+            label="الاسم الكامل "
             name="fullName"
             autoComplete="fullName"
             autoFocus
@@ -97,9 +98,10 @@ const  SignUp =() =>{
             required
             fullWidth
             id="email"
-            label="Email Address"
+            label="عنوان البريد الإلكتروني"
             name="username"
             autoComplete="email"
+            type="email"
             autoFocus
             onChange={onChange}
           />
@@ -112,7 +114,7 @@ const  SignUp =() =>{
             required
             fullWidth
             name="password"
-            label="Password"
+            label="كلمه السر"
             type="password"
             id="password"
             autoComplete="current-password"
@@ -126,7 +128,7 @@ const  SignUp =() =>{
             required
             fullWidth
             name="confirmPassword"
-            label="confirm your password"
+            label="تأكيد كلمة السر"
             type="password"
             id="confirmPassword"
             autoComplete="current-password"
@@ -143,7 +145,8 @@ const  SignUp =() =>{
             className={classes.submit}
             disabled={shoudDisableSignUp}
           >
-            {shoudDisableSignUp?'connecting....':'Sign Up'}
+            {shoudDisableSignUp?<div style={{color:"brown"}}>....جاري التوصيل بالخادم </div>:'اشتراك '}
+
           </Button>
         </form>
       </div>

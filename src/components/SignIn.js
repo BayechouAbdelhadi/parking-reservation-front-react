@@ -131,7 +131,7 @@ const redirect=()=>history.push('/register');
             className={classes.submit}
             disabled={shoudDisableSignIn}
           >
-             {shoudDisableSignIn?'جاري التوصيل بالخادم....':'تسجيل الدخول '}
+             {shoudDisableSignIn?<div style={{color:"brown"}}>....جاري التوصيل بالخادم </div>:'تسجيل الدخول '}
           </Button>
           <Grid container>
             <Grid item>
