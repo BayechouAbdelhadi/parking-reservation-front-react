@@ -48,7 +48,8 @@ const useStyles = makeStyles((theme) => ({
   error:{
     color:'red',
     fontWeight:'bold',
-    fontSize:16
+    fontSize:13,
+    textAlign:'center'
   }
   ,
   Container:{
