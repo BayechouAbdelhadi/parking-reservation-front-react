@@ -23,6 +23,12 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    backgroundColor:'white',
+    padding:10,
+    borderRadius:'3%',
+    boxShadow:' 0px 0px 5px 1px',
+    opacity:'80%',
+
   },
   avatar: {
     margin: theme.spacing(1),
@@ -46,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
   }
   ,
   Container:{
-    backgroundColor:'white'
+    
   }
   
 }));
@@ -82,9 +88,9 @@ const  SignIn =() =>{
 const redirect=()=>history.push('/register');
 
   return (
-    <Container component="main" maxWidth="xs"className={classes.container} >
+    <Container component="main" maxWidth="xs" >
       <CssBaseline />
-      <div className={classes.paper}>
+      <div className={classes.paper}  >
         <Avatar className={classes.avatar}>
 
         </Avatar>

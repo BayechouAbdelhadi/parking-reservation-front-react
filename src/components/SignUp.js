@@ -19,6 +19,11 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    backgroundColor:'white',
+    padding:10,
+    borderRadius:'3%',
+    boxShadow:' 0px 0px 5px 1px',
+    opacity:'80%',
   },
   avatar: {
     margin: theme.spacing(1),
