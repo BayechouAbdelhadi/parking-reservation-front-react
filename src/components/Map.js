@@ -31,7 +31,7 @@ const Content = () => {
 const Map = () => {
     return (
         <>
-        <div style={{color:'red',height:40,backgroundColor:'white'}}><marquee behavior="scroll" direction="left" ><h3>هذا نموذج تجريبي قابل للتعديل حسب رغبة الجهة المستفيدة</h3></marquee></div>
+        <div style={{color:'red',height:60,backgroundColor:'white'}}><marquee behavior="scroll" direction="left" ><h3>هذا نموذج تجريبي قابل للتعديل حسب رغبة الجهة المستفيدة</h3></marquee></div>
         <div style={{ display: 'flex', height: 1000 }}>
             <MapContainer
                 center={[24.790813855392256, 46.741996280426456]}
