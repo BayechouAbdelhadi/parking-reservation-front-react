@@ -1,9 +1,9 @@
 export const getTime=(index)=>{
     switch(index){
-      case 1:return "from 8h to 10h" ;
-      case 2:return "from 10h to 12h" ;
-      case 3 :return "from 14h to 16h" ;
-      case 4:return "from 16h to 18h" ;
+      case 1:return "من 8 الى 10 " ;
+      case 2:return "من 10 الى 12 " ;
+      case 3 :return "من 14 الى 16  " ;
+      case 4:return "من 16 الى 18 " ;
       default:return "";
     }
 }

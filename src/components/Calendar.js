@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 20,
     fontWeight: 'bold',
     color:'red',
+    textAlign:'center'
   },
   validateButton:{
     marginBottom:5,
@@ -62,26 +63,26 @@ const Calendar1=({seat})=>{
   }
   
   return (
-   <div >
+   <div style={{textAlign:'center'}} >
      {
       dateSelected ? (
         !dataCompleted?
           (
           <div style={{ margin:'0 auto'}}> 
-            <p className={classes.root}>Pick a time</p>
+            <p className={classes.root}>اختر التوقيت</p>
             <SlotTime  setTimeSelected={setTimeSelected} setTimeValue={setTimeValue} seat={seat} dateValue={dateValue}/>
           </div>
           ):
           (<>
-          <p className={classes.root}>Details</p>
-          <h3>You have choosen to book for :</h3>
-          <h3>{`${dateValue.getDate()}-${dateValue.getMonth()+1}-${dateValue.getFullYear()}`}</h3>
+          <p className={classes.root}>تفاصيل</p>
+          <h3> : لقد اخترت الحجز </h3>
           <h3>{getTime(timeValue)}</h3>
+          <h3>{`${dateValue.getDate()}-${dateValue.getMonth()+1}-${dateValue.getFullYear()}`}</h3>
           </>
           )
       ):
       (<>
-        <p className={classes.root}>Pick a date</p>
+        <p className={classes.root}>اختر التاريخ</p>
         <Calendar
           onChange={(e)=>onDateSelcted(e)}
           value={dateValue}

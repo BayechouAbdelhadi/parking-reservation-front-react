@@ -6,7 +6,7 @@ function CircularProgressWithLabel(props) {
     return (
       <Box position="relative"    justifyContent="center" p={1}>
         <div  style={{textAlign:'center',marginBottom:'10px',fontWeight:'bold',fontSize:14}}>
-            {4-props.value/25>0?<b style={{color:'green'}}>Status today : availlable </b>:<b style={{color:'red'}}>Status today : not availlable</b>}
+            {4-props.value/25>0?<b style={{color:'green'}}>الوضع اليوم:  متوفر </b>:<b style={{color:'red'}}>الوضع اليوم: غير متوفر</b>}
         </div>
         {props.value>0 &&<CircularProgress variant="determinate" {...props} />}
         <Box

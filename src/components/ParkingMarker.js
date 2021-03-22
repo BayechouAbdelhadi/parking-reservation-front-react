@@ -40,7 +40,7 @@ export default function ParkingMarker({parking}){
                     <Popup style={{ height: "400px" }} key={parking.coordinates[1]}>
                         <ParkingCalendar park={parking.id} />
                     </Popup>
-                    <Tooltip key={parking.coordinates[0]}> Park</Tooltip>
+                    <Tooltip key={parking.coordinates[0]}> موقف</Tooltip>
         </Marker>
     )
 }

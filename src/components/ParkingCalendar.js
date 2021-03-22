@@ -105,9 +105,9 @@ const ParkingCalendar = ({ park }) => {
         <div>
             {
                 datesSelected ?
-                    <div>
-                        <p className={classes.root}>Details</p>
-                        <h3>You have choosen to book</h3>
+                    <div style={{textAlign:'center'}}>
+                        <p className={classes.root}>تفاصيل</p>
+                        <h3>: لقد اخترت الحجز</h3>
                         <h3>{showDatesRange(dateValue)}</h3>
                         <div style={{ display: "flex", justifyContent: "space-between", marginTop: 15 }}>
 
@@ -141,8 +141,8 @@ const ParkingCalendar = ({ park }) => {
                         >
                         </Calendar>
                         {errorRange &&
-                            <div style={{ color: "red", fontSize: 16, fontWeight: 'bold', dmarginTop: 20, display: "flex", justifyContent: "center", marginTop: 15 }}>
-                                Impossible!<GiInterdiction color="red" onClick={book} variant="contained" />pick another date
+                            <div style={{ color: "red", fontSize: 16, fontWeight: 'bold', dmarginTop: 20, display: "flex", justifyContent: "center", marginTop: 15 }} dir="rtl">
+                                 لا يمكن!  <GiInterdiction color="red" onClick={book} variant="contained" />  اختر تاريخا اخر  
                     </div>
                         }
                     </div>
@@ -154,7 +154,7 @@ const ParkingCalendar = ({ park }) => {
 export default ParkingCalendar;
 
 function showDatesRange(dates) {
-    return `from ${dates[0].getDate()}-${dates[0].getMonth() + 1}-${dates[0].getFullYear()} to 
+    return `من ${dates[0].getDate()}-${dates[0].getMonth() + 1}-${dates[0].getFullYear()} الى 
      ${dates[1].getDate()}-${dates[1].getMonth() + 1}-${dates[1].getFullYear()}
     `
 }

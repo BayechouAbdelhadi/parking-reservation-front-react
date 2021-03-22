@@ -32,16 +32,16 @@ function Profile() {
         <Box className={classes.wrapper} >
             
             <div className="App">
-              <h2>Hi {fullName}</h2>
-              <h3>Here you can check your reservations</h3>
+              <h2> {fullName} مرحبا</h2>
+              <h3>هنا يمكنك تفقد عمليات الحجز التي قمت بها</h3>
 
               <Tabs>
                 <Tab onClick={handleClick} active={active === 0} id={0}>
-                  Seat
+                مقعد
                 </Tab>
 
                 <Tab onClick={handleClick} active={active === 1} id={1}>
-                  Parking
+                موقف
                 </Tab>
               </Tabs>
               <>

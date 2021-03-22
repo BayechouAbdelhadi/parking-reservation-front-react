@@ -86,7 +86,7 @@ const redirect=()=>history.push('/register');
 
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+        تسجيل الدخول
         </Typography>
         <form className={classes.form} noValidate onSubmit={onSubmit}>
           <TextField
@@ -95,7 +95,7 @@ const redirect=()=>history.push('/register');
             required
             fullWidth
             id="email"
-            label="Email Address"
+            label="عنوان البريد الإلكتروني"
             name="username"
             autoComplete="email"
             autoFocus
@@ -110,7 +110,7 @@ const redirect=()=>history.push('/register');
             required
             fullWidth
             name="password"
-            label="Password"
+            label="كلمه السر"
             type="password"
             id="password"
             autoComplete="current-password"
@@ -121,7 +121,7 @@ const redirect=()=>history.push('/register');
                   )}
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
+            label="تذكرنى"
           />
           <Button
             type="submit"
@@ -131,12 +131,12 @@ const redirect=()=>history.push('/register');
             className={classes.submit}
             disabled={shoudDisableSignIn}
           >
-             {shoudDisableSignIn?'connecting....':'Sign In '}
+             {shoudDisableSignIn?'جاري التوصيل بالخادم....':'تسجيل الدخول '}
           </Button>
           <Grid container>
             <Grid item>
               <Link to="/register" >
-                {"Don't have an account? Sign Up"}
+                {"ليس لديك حساب؟ اشتراك"}
               </Link>
             </Grid>
           </Grid>

@@ -48,31 +48,31 @@ export default function Key() {
                 <Grid container justify="center" spacing={2}>
                     <Grid key={1} spacing={2} >
                         <Paper className={classes.paper}>
-                            <div className={classes.availabel}>available</div>
+                            <div className={classes.availabel}>متوفر</div>
                             <img src='/setGreen.png' style={{ marginTop:10,marginBottom:10}}width={40} height={40} alt="" />
-                            <div className={classes.type}>Seat </div>
+                            <div className={classes.type}>مقعد </div>
                         </Paper>
                     </Grid>
                     <Grid key={2} spacing={2} >
                         <Paper className={classes.paper}>
-                            <div className={classes.unavailabel}>unavailable </div>
+                            <div className={classes.unavailabel}>غير متوفر</div>
                             <img src='/setRed.png' style={{ marginTop:10,marginBottom:10}} width={40} height={40} alt=""/>
-                            <div className={classes.type}>Seat </div>
+                            <div className={classes.type}>مقعد </div>
 
                         </Paper>
                     </Grid>
                     <Grid key={3} spacing={2} >
                         <Paper className={classes.paper}>
-                            <div className={classes.availabel}>available</div>
+                            <div className={classes.availabel}>متوفر</div>
                             <img src='/parckGreen.png' width={80} height={60}alt="" />
-                            <div className={classes.type}>Park </div>
+                            <div className={classes.type}>موقف </div>
                         </Paper>
                     </Grid>
                     <Grid key={4} spacing={2} >
                         <Paper className={classes.paper}>
-                           <div className={classes.unavailabel}>unavailable </div>
+                           <div className={classes.unavailabel}>غير متوفر</div>
                             <img src='/parckRed.png' width={80} height={60} alt=""/>
-                           <div className={classes.type}>Park </div>
+                           <div className={classes.type}>موقف </div>
                         </Paper>
                     </Grid>
 
