@@ -120,18 +120,16 @@ const ParkingCalendar = ({ park }) => {
                                 onClick={back}
                                 variant="contained"
                                 color="primary"
-                                disableElevation
                             >
                                 <ArrowBackIcon color="red" />
                             </IconButton>
                             <IconButton
-                                //onClick={book}
+                                onClick={book}
                                 variant="contained"
                                 color="primary"
-                                disableElevation
                                 className={classes.validateButton}
                             >
-                                <DoneOutlineIcon color="green" onClick={book} />
+                                <DoneOutlineIcon color="green"  />
                             </IconButton>
                         </div>
                     </div> :

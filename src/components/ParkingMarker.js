@@ -11,7 +11,13 @@ function isWithinRange(date, range) {
     return isWithinInterval(date, { start: range[0], end: range[1] });
 }
 function isWithinRanges(date, ranges) {
-    return ranges.some(range => isWithinRange(date, range));
+    return ranges.some(range => isWithinRange(date, range)||sameDate(date, range[0]) ||sameDate(date, range[1]));
+}
+function sameDate(dat1, dat2) {
+    return dat1.getDate() === dat2.getDate() && dat1.getFullYear() === dat2.getFullYear() && dat1.getMonth() === dat2.getMonth()
+}
+function isBooked(date,ranges){
+    return isWithinRanges(date, ranges) 
 }
 export default function ParkingMarker({parking}){
 
@@ -19,13 +25,12 @@ export default function ParkingMarker({parking}){
     useEffect(async ()=>{
             await axios.get(`${SERVER_URL}/api/parking/${parking.id}`,{"Authorisation":authHeader})
             .then(response=>{
-                const reservations = response.data;
                 const ranges = response.data.map(res => {
                     const range = [new Date(res.startDate), new Date(res.endDate)];
                     return range;
                 });
-                
-                setBooked(isWithinRanges(new Date((Date.now())),ranges));
+                console.log(isBooked(new Date((Date.now())),ranges));
+                setBooked(isBooked(new Date((Date.now())),ranges));
             })
             .catch(error=>{
                 //console.log(error);
