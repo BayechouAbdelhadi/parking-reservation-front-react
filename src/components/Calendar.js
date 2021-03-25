@@ -10,8 +10,11 @@ import SlotTime from './SlotTime';
 import { saveSeatReservation } from "../actions/reservationActions";
 import {useStore} from "react-redux";
 import { useHistory } from "react-router-dom";
+import {useSelector} from "react-redux";
 import {getTime} from "../util/formatTime";
 import formatDate from "../util/formatDate";
+
+
 
 
 
@@ -35,13 +38,17 @@ const Calendar1=({seat})=>{
   const [dateSelected, setDateSelected] = useState(false);
   const [timeSelected,setTimeSelected]=useState(false);
   const [timeValue,setTimeValue]=useState(0);
-
+  const validToken=useSelector(state=>state.security.validToken);
   const [dataCompleted,setDataCompleted]=useState(false);
 
   const classes=useStyles();
   function onDateSelcted(e){
-    setDateValue(new Date(e));
-    setDateSelected(true);
+    if(!validToken) 
+         history.push('/signin')
+    else{
+        setDateValue(new Date(e));
+        setDateSelected(true);
+    }
   }
   const backToCalendar=()=>{
     setDateSelected(false);

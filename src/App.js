@@ -35,7 +35,9 @@ const App =()=> {
                   <Header/>
                   <BodyWrapper>
                       <Switch >
-                          <Route exact path="/" component={SignIn} />
+                          <Route exact path="/" component={Map} />
+                          <Route exact path="/signin" component={SignIn} />
+
                           <Route  exact path="/register" component={SignUp} />
                           <SecuredRoute exact path="/book" component={Map} />
                           <SecuredRoute exact path="/profile" component={Profile} />

@@ -11,10 +11,10 @@ import { useStore } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { saveParkingReservation } from "../actions/parkingReservationActions";
 import axios from 'axios';
+import { useSelector } from "react-redux";
 import authHeader from "../securityUtils/authorisationHeader"
 import SERVER_URL from '../securityUtils/path';
 import formatDate from "../util/formatDate";
-
 
 function isWithinRange(date, range) {
     return isWithinInterval(date, { start: range[0], end: range[1] });
@@ -23,10 +23,10 @@ function isWithinRanges(date, ranges) {
     return ranges.some(range => isWithinRange(date, range));
 }
 function checkFirstDate(date, ranges) {
-    return ranges.some(range => { return sameDate(date,range[0])});
+    return ranges.some(range => { return sameDate(date, range[0]) });
 }
-function sameDate(dat1,dat2){
-    return dat1.getDate()===dat2.getDate()&& dat1.getFullYear()===dat2.getFullYear()&&dat1.getMonth()===dat2.getMonth()
+function sameDate(dat1, dat2) {
+    return dat1.getDate() === dat2.getDate() && dat1.getFullYear() === dat2.getFullYear() && dat1.getMonth() === dat2.getMonth()
 }
 function rangeIntersection(selectedrange, disabledRange) {
     return selectedrange[0] < disabledRange[0] && selectedrange[1] > disabledRange[1];
@@ -36,19 +36,20 @@ const useStyles = makeStyles((theme) => ({
         fontSize: 20,
         fontWeight: 'bold',
         color: 'red',
-        padding:10,
-        maeginBottom:10,
-        textAlign:'center'
+        padding: 10,
+        maeginBottom: 10,
+        textAlign: 'center'
     },
-    validateButton:{
-        marginBottom:5,
-        marginRight:5
-      }
+    validateButton: {
+        marginBottom: 5,
+        marginRight: 5
+    }
 }));
 const ParkingCalendar = ({ park }) => {
     const classes = useStyles();
     const store = useStore();
     const history = useHistory();
+    const validToken = useSelector(state => state.security.validToken);
     const [dateValue, setDateValue] = useState([]);
     const [datesSelected, setDatesSelected] = useState(false);
     const [disabledRanges, setDisabledRanges] = useState([]);
@@ -60,17 +61,21 @@ const ParkingCalendar = ({ park }) => {
 
     function tileDisabled({ date, view }) {
         if (view === 'month') {
-            return isWithinRanges(date, disabledRanges)||checkFirstDate(date, disabledRanges);
+            return isWithinRanges(date, disabledRanges) || checkFirstDate(date, disabledRanges);
         }
     }
 
     function dateSelected(e) {
-        const selectedRane = [new Date(e[0]), new Date(e[1])];
-        if (disabledRanges.some((range => rangeIntersection(selectedRane, range))))
-            setErrorRange(true);
+        if (!validToken)
+            history.push('/signin')
         else {
-            setDateValue(selectedRane);
-            setDatesSelected(true);
+            const selectedRane = [new Date(e[0]), new Date(e[1])];
+            if (disabledRanges.some((range => rangeIntersection(selectedRane, range))))
+                setErrorRange(true);
+            else {
+                setDateValue(selectedRane);
+                setDatesSelected(true);
+            }
         }
     }
 
@@ -83,29 +88,29 @@ const ParkingCalendar = ({ park }) => {
         store.dispatch(saveParkingReservation(parkReservation, history));
     }
 
-    useEffect( () => {
-        async function fetch(){
+    useEffect(() => {
+        async function fetch() {
             await axios.get(`${SERVER_URL}/api/parking/${park}`, { "Authorisation": authHeader })
-            .then(response => {
-                const ranges = response.data.map(res => {
-                    const range = [new Date(res.startDate), new Date(res.endDate)];
-                    return range;
+                .then(response => {
+                    const ranges = response.data.map(res => {
+                        const range = [new Date(res.startDate), new Date(res.endDate)];
+                        return range;
+                    });
+                    setDisabledRanges(ranges);
+                })
+                .catch(error => {
+                    console.log(error);
                 });
-                setDisabledRanges(ranges);
-            })
-            .catch(error => {
-                console.log(error);
-            });
         }
         fetch();
     }, []);
-        
+
 
     return (
         <div>
             {
                 datesSelected ?
-                    <div style={{textAlign:'center'}}>
+                    <div style={{ textAlign: 'center' }}>
                         <p className={classes.root}>تفاصيل</p>
                         <h3>: لقد اخترت الحجز</h3>
                         <h3>{showDatesRange(dateValue)}</h3>
@@ -142,7 +147,7 @@ const ParkingCalendar = ({ park }) => {
                         </Calendar>
                         {errorRange &&
                             <div style={{ color: "red", fontSize: 16, fontWeight: 'bold', dmarginTop: 20, display: "flex", justifyContent: "center", marginTop: 15 }} dir="rtl">
-                                 لا يمكن!  <GiInterdiction color="red" onClick={book} variant="contained" />  اختر تاريخا اخر  
+                                لا يمكن!  <GiInterdiction color="red" onClick={book} variant="contained" />  اختر تاريخا اخر
                     </div>
                         }
                     </div>

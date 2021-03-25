@@ -78,7 +78,7 @@ const ButtonAppBar=()=> {
             </StyledLink>
           </>:
           <>
-            <StyledLink  to="/" >
+            <StyledLink  to="/signin">
               <IconButton ><FiLogIn/></IconButton>
             </StyledLink>
             <StyledLink  to="/register" >
