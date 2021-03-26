@@ -6,7 +6,7 @@ import IconButton from '@material-ui/core/IconButton';
 import { FiKey } from "react-icons/fi";
 import seats from '../data/seats';
 import parkings from '../data/parkings';
-import area from '../data/area';
+///import area from '../data/area';
 import Key from "./Key";
 import SeatMarker from "./SeatMarker";
 import ParkingMarker from "./ParkingMarker";
@@ -25,7 +25,9 @@ const Content = () => {
                 return <ParkingMarker parking={parking} />
             })
             }
-            <Polygon pathOptions={transparentOption} positions={area} />
+            {
+                //<Polygon pathOptions={transparentOption} positions={area} />
+            }
         </>)
 }
 const Map = () => {
